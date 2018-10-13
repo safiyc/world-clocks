@@ -4,7 +4,14 @@ const hourHand = document.querySelector('.hour-hand');
 function setDate() {
     const now = new Date();
     const seconds = now.getSeconds();
+    // 90 is degree rotate of .hand transform
     const secondsDegrees = ((seconds / 60) * 360) + 90;
+    // failed attempt to fix issue when at 90deg: secondHand rotates around back to 90deg
+    // if (secondsDegrees == 90) {
+    //     secondHand.style.transition = "unset";
+    // } else if (secondsDegrees != 90) {
+    //     secondHand.style.transition = "all 0.05s";
+    // }
     secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
     const mins = now.getMinutes();
     const minsDegrees = ((mins / 60) * 360) + ((seconds / 60) * 6) + 90;
